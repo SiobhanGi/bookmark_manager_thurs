@@ -19,4 +19,11 @@ feature 'Homepage' do
     click_button 'Enscribe'
     expect(page).to have_content 'https://www.msnnews.co.uk'
   end
+
+  scenario 'Does not allow an invalid url to be added' do
+    visit('/')
+    fill_in 'bookmark', with: 'https:|/www.bbc.co.uk/news'
+    click_button 'Enscribe'
+    expect(page).not_to have_content 'https:|/www.bbc.co.uk/news'
+  end
 end
