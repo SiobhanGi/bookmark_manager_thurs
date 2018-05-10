@@ -25,5 +25,7 @@ feature 'Homepage' do
     fill_in 'bookmark', with: 'https:|/www.bbc.co.uk/news'
     click_button 'Enscribe'
     expect(page).not_to have_content 'https:|/www.bbc.co.uk/news'
+    expect(page).to have_content 'Invalid url'
   end
+
 end
